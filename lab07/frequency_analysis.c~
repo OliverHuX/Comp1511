@@ -1,0 +1,59 @@
+//This program reads characters from its input until end of input.
+//It prints the occurrence frequency for each of the 26 letters 'a'..'z'.
+//wirtten by Xiao Hu z5223731
+
+#include <stdio.h>
+#define NUM 26
+int lower_case(int character);
+double frequency(int size, int count[], double num_integers);
+
+int main (void) {
+    int character;
+    char read_char[10000];
+    int i = 0, size = 123, count[size];
+    double num_integers = 0;
+    character = getchar();
+    
+    for (int j = 0; j < size; j++) {
+        count[j] = 0;
+    }
+    
+    while (character != EOF) {
+        if(character >= 'A' && character <= 'Z') {
+            read_char[i] = lower_case(character);
+            count[lower_case(character)] = count[lower_case(character)] + 1;
+            i++;
+            num_integers++;
+            character = getchar();
+        } else if (character >= 'a' && character <= 'z') {
+            read_char[i] = character;
+            count[character] = count[character] + 1;
+            i++;
+            num_integers++;
+            character = getchar();
+        } else {
+            character = getchar();
+        }
+    }
+        
+    for (int j = 97; j < 123; j++) {
+        printf("'%c' %lf %d\n", j, frequency(j, count, num_integers), count[j]);
+    }
+    
+    
+    
+    return 0;
+}
+   
+int lower_case(int character) {
+    int new_char = character - 'A';
+    return 'a' + new_char;
+}
+
+double frequency(int size, int count[], double num_integers) {
+    double frequence = 0;
+    frequence = count[size]/num_integers;
+    return frequence;
+}
+
+

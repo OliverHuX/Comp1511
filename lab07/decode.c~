@@ -1,0 +1,37 @@
+#include <stdio.h>
+#define Difference 32
+
+int subs_cipher(char *argv[], int read_character);
+
+int main (int argc, char *argv[]) {
+    int read_character = getchar();
+    while (read_character != EOF) {
+        
+        putchar(subs_cipher(argv, read_character));
+        read_character = getchar();
+        
+    }
+    
+    return 0;
+}
+
+int subs_cipher(char *argv[], int read_character) {
+    int diff = 0;
+    if (read_character >= 'a' && read_character <= 'z') {   
+        for (int i = 0; i < 26; i++) {
+            if(read_character == argv[1][i]) {
+                diff = i;
+            }
+        }
+        return diff;
+    } else if (read_character >= 'A' && read_character <= 'Z') {
+        for (int i = 0; i < 26; i++) {
+            if(read_character == argv[1][i]) {
+                diff = i;
+            }
+        }
+        return diff;
+    } else {
+        return read_character;
+    }
+} 
